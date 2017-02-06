@@ -28,7 +28,10 @@ RUN chown -R meteor:meteor .ssh /usr/bin/entrypoint.sh
 # Allow node to listen to port 80 even when run by non-root user meteor
 RUN setcap 'cap_net_bind_service=+ep' /usr/bin/nodejs
 
-EXPOSE 80
+# not going to expose port 80 because we are using rancher and setting up
+# load balancing service in front of containers
+
+# EXPOSE 80
 
 # Execute entrypoint as user meteor
 ENTRYPOINT ["su", "-c", "/usr/bin/entrypoint.sh", "meteor"]
