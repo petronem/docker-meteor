@@ -151,6 +151,8 @@ if [ -e ${BUNDLE_DIR}/programs/server ]; then
    echo "Installing NPM prerequisites..."
    # Install all NPM packages
    npm install
+   # TESTING HERE W/ A SLEDGE HAMMER
+   npm install knox
    popd
 else
    echo "Unable to locate server directory in ${BUNDLE_DIR}; hold on: we're likely to fail"
