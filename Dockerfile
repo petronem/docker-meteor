@@ -14,7 +14,9 @@ RUN apt-get update && \
    apt-get clean && \
    rm -Rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN npm install -g semver
+# seeing issues and trying out suggestions from:
+# https://github.com/meteor/meteor/issues/7568
+RUN npm install -g semver node-gyp node-pre-gyp
 
 # Install entrypoint
 COPY entrypoint.sh /usr/bin/entrypoint.sh
