@@ -30,6 +30,14 @@ RUN ( curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.
 # RUN npm install -g semver node-gyp node-pre-gyp
 
 USER root
+# think need to switch from nvm because it is user isolated
+RUN ( curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash ) && \
+   export NVM_DIR="$HOME/.nvm" && \
+   [ -s "$NVM_DIR/nvm.sh" ] && \
+   . "$NVM_DIR/nvm.sh" && \
+   nvm install 4.6.2 && \
+npm install -g semver node-gyp node-pre-gyp
+
 # Install entrypoint
 COPY entrypoint.sh /usr/bin/entrypoint.sh
 RUN chmod +x /usr/bin/entrypoint.sh
