@@ -15,7 +15,7 @@ RUN apt-get update && \
    apt-get install -y git curl && \
    apt-get install -y jq && \
    apt-get clean && \
-   rm -Rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
+   rm -Rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 USER meteor
 RUN ( curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash ) && \
