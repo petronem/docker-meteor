@@ -12,7 +12,7 @@ WORKDIR /home/meteor
 RUN apt-get update && \
    apt-get install -y git curl && \
    (curl https://deb.nodesource.com/setup_4.x | bash) && \
-   apt-get install -y jq && \
+   apt-get install -y curl jq && \
    apt-get clean && \
    rm -Rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
