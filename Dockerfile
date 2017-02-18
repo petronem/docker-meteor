@@ -7,12 +7,18 @@ RUN useradd meteor -G staff -m -s /bin/bash
 WORKDIR /home/meteor
 
 # Install git, curl
+# removed installing node from distribution to get better control of installed version
+#   apt-get install -y nodejs jq && \
 RUN apt-get update && \
    apt-get install -y git curl && \
    (curl https://deb.nodesource.com/setup_4.x | bash) && \
-   apt-get install -y nodejs jq && \
+   apt-get install -y jq && \
    apt-get clean && \
    rm -Rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# use nvm to install node
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+nvm install 4.6.2
 
 # seeing issues and trying out suggestions from:
 # https://github.com/meteor/meteor/issues/7568
