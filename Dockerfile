@@ -10,13 +10,16 @@ WORKDIR /home/meteor
 # removed installing node from distribution to get better control of installed version
 # (curl https://deb.nodesource.com/setup_4.x | bash) && \
 #   apt-get install -y nodejs jq && \
+# use nvm to install node instead
 RUN apt-get update && \
    apt-get install -y git curl && \
    apt-get install -y jq && \
    apt-get clean && \
-   # use nvm to install node
-   (curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash) && \
-   nvm install 4.6.2 && \
+   ( curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash ) && \
+   export NVM_DIR="$HOME/.nvm" && \
+   [ -s "$NVM_DIR/nvm.sh" ] && \
+   . "$NVM_DIR/nvm.sh" && \
+   nvm install 4.6.2 \
    rm -Rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # seeing issues and trying out suggestions from:
